@@ -2,9 +2,8 @@
 
 /**
  * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 2 of the License, or
- * (at your option) any later version.
+ * it under the terms of the GNU General Public License version 2
+ * as published by the Free Software Foundation.
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -26,7 +25,24 @@ class Index {
 
 	// DOC   status - Show package(s) status
 	public function status() {
-		// code...
+
+		$console = new \Pdr\Console;
+		// TODO determine git root dir
+		// TODO check vendor dir existance
+		$gitRootDir = getcwd();
+		$vendorRootDir = $gitRootDir.'/vendor';
+		foreach ($console->line('find'
+			.' '.escapeshellarg($vendorRootDir.'/')
+			.' -mindepth 2 -maxdepth 2 -type d'
+			) as $vendorDir) {
+			$vendorGitDir = $vendorDir.'/.git';
+			$vendorName = substr($vendorDir, strlen($vendorRootDir) + 1);
+			$vendorCommandGitStatus = 'git --git-dir='.$vendorGitDir.' status --short';
+			$vendorGitStatus = $console->text($vendorCommandGitStatus);
+			if ($vendorGitStatus) {
+				echo "$vendorName\n";
+			}
+		}
 	}
 
 	// DOC   help - Show this information and exit

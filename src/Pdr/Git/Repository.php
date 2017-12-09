@@ -15,22 +15,19 @@
  *
  **/
 
-class Application {
-	public function start() {
+namespace Pdr\Git;
 
-		$controller = new \Controller\Index;
+class Repository {
 
-		$functionName = 'help';
-		$arguments = array();
+	public function open($directory) {
 
-		if ($_SERVER['argc'] > 1 ) {
-			$functionName = $_SERVER['argv'][1];
-		}
+	}
 
-		call_user_func_array(
-			array($controller, $functionName)
-			, $arguments
-			);
+	public function getGitDir() {
+
+	}
+
+	public function getVendorDir() {
+
 	}
 }
-
