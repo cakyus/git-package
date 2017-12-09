@@ -19,8 +19,18 @@ $phar = new \Phar($buildFile
 	);
 
 $phar['index.php'] = file_get_contents('index.php');
-$phar['src/Application.php'] = file_get_contents($srcRoot.'/Application.php');
-$phar['src/Controller/Index.php'] = file_get_contents($srcRoot.'/Controller/Index.php');
+
+$srcFiles = new RecursiveIteratorIterator(
+	new RecursiveDirectoryIterator($srcRoot)
+);
+
+foreach ($srcFiles as $srcFileName => $srcFile) {
+	if (is_file($srcFileName) == FALSE) {
+		continue;
+	}
+	$phar[$srcFileName] = file_get_contents($srcFileName);
+}
+
 $phar->startBuffering();
 $pharStub = $phar->createDefaultStub('index.php');
 $pharStub = "#!/usr/bin/env php\n".$pharStub;
