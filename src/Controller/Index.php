@@ -31,6 +31,9 @@ class Index {
 		// TODO check vendor dir existance
 		$gitRootDir = getcwd();
 		$vendorRootDir = $gitRootDir.'/vendor';
+		if (is_dir($vendorRootDir) == FALSE) {
+			return TRUE;
+		}
 		foreach ($console->line('find'
 			.' '.escapeshellarg($vendorRootDir.'/')
 			.' -mindepth 2 -maxdepth 2 -type d'
