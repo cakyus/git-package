@@ -1,7 +1,8 @@
 <?php
 
-include('src/Controller/Index.php');
+require_once('src/Application.php');
+require_once('src/Controller/Index.php');
 
-$controller = new \Controller\Index;
-$controller->index();
+$application = new \Application;
+$application->start();
 

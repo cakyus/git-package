@@ -16,27 +16,22 @@
  *
  **/
 
-namespace Controller;
+class Application {
+	public function start() {
 
-// DOC Git Package Management
-// DOC Usage: git-package <command> [argument..]
-// DOC Commands:
+		$controller = new \Controller\Index;
 
-class Index {
+		$functionName = 'help';
+		$arguments = array();
 
-	// DOC   status - Show package(s) status
-	public function status() {
-		// code...
-	}
-
-	// DOC   help - Show this information and exit
-
-	public function help() {
-		foreach (file(__FILE__) as $line) {
-			$line = trim($line);
-			if (substr($line, 0, 7) == '// DOC ') {
-				echo substr($line, 7)."\n";
-			}
+		if ($_SERVER['argc'] > 1 ) {
+			$functionName = $_SERVER['argv'][1];
 		}
+
+		call_user_func_array(
+			array($controller, $functionName)
+			, $arguments
+			);
 	}
 }
+

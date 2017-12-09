@@ -19,6 +19,7 @@ $phar = new \Phar($buildFile
 	);
 
 $phar['index.php'] = file_get_contents('index.php');
+$phar['src/Application.php'] = file_get_contents($srcRoot.'/Application.php');
 $phar['src/Controller/Index.php'] = file_get_contents($srcRoot.'/Controller/Index.php');
 $phar->startBuffering();
 $pharStub = $phar->createDefaultStub('index.php');
