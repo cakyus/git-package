@@ -45,7 +45,7 @@ class Index {
 				.' --work-tree='.$vendorDir
 				.' status --short';
 			$vendorGitStatus = $console->text($vendorCommandGitStatus);
-			if ($vendorGitStatus) {
+			if (empty($vendorGitStatus) == FALSE) {
 				echo "$vendorName\n";
 			}
 		}
