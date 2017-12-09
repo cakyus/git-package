@@ -2,7 +2,7 @@ all: clean
 	[ ! -d build ] && mkdir build || true
 	php -c php.ini scripts/phar.php
 clean:
-	[ -d build ] && rm -rf build
+	[ -d build ] && rm -rf build || true
 install:
 	[ ! -d $$HOME/bin ] && mkdir $$HOME/bin || true
 	[ -f $$HOME/bin/git-package ] && rm $$HOME/bin/git-package || true
