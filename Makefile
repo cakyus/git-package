@@ -1,6 +1,6 @@
 all: clean
 	[ ! -d build ] && mkdir build || true
-	php -c php.ini scripts/phar.php
+	php -c php.ini bin/phar.php
 clean:
 	[ -d build ] && rm -rf build || true
 install:
