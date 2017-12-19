@@ -70,7 +70,7 @@ class Index {
 		echo "create package $vendorName/$projectName in $projectDir ..\n";
 
 		echo "create LICENSE ..\n";
-		copy('LICENSE', $projectDir.'/LICENSE');
+		copy(dirname(__FILE__).'/LICENSE', $projectDir.'/LICENSE');
 
 		echo "create bin/ ..\n";
 		mkdir($projectDir.'/bin');
