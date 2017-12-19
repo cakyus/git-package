@@ -19,6 +19,7 @@ $phar = new \Phar($buildFile
 	);
 
 $phar['index.php'] = file_get_contents('index.php');
+$phar['LICENSE'] = file_get_contents('LICENSE');
 
 $srcFiles = new RecursiveIteratorIterator(
 	new RecursiveDirectoryIterator($srcRoot)

@@ -1,5 +1,7 @@
 <?php
 
+define('FCPATH', dirname(__FILE__).'/');
+
 spl_autoload_register(function($className){
 	$fileName = $className;
 	$fileName = str_replace('\\', '/', $fileName);
