@@ -21,10 +21,12 @@ class Application {
 		$controller = new \Controller\Index;
 
 		$functionName = 'help';
-		$arguments = array();
+		$arguments = $_SERVER['argv'];
+		array_shift($arguments);
 
-		if ($_SERVER['argc'] > 1 ) {
-			$functionName = $_SERVER['argv'][1];
+		if (count($arguments)) {
+			$functionName = $arguments[0];
+			array_shift($arguments);
 		}
 
 		call_user_func_array(
