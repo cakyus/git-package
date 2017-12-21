@@ -55,7 +55,7 @@ class Index {
 
 	public function create($packageName) {
 
-		if (!preg_match("/^([a-z][a-z0-9]*)\/([a-z][a-z0-9]*)$/", $packageName, $match)) {
+		if (!preg_match("/^([a-z][a-z0-9]*)\/([a-z][a-z0-9\-]*[a-z0-9])$/", $packageName, $match)) {
 			throw new \Exception("Invalid projectName");
 		}
 
