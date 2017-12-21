@@ -40,7 +40,10 @@ class Index {
 			) as $vendorDir) {
 			$vendorGitDir = $vendorDir.'/.git';
 			$vendorName = substr($vendorDir, strlen($vendorRootDir) + 1);
-			$vendorCommandGitStatus = 'git --git-dir='.$vendorGitDir.' status --short';
+			$vendorCommandGitStatus = 'git'
+				.' --git-dir='.$vendorGitDir
+				.' --work-tree='.$vendorDir
+				.' status --short';
 			$vendorGitStatus = $console->text($vendorCommandGitStatus);
 			if ($vendorGitStatus) {
 				echo "$vendorName\n";
