@@ -97,13 +97,25 @@ class Index {
 	,"description": "'.$packageName.'"
 	,"license": "GPL-2.0"
 	,"autoload": {
-		"psr-4": {
+		 "classmap": ["src/"]
+		,"psr-4": {
 			 "\\\\'.ucwords($vendorName).'\\\\'.ucwords($projectName).'\\\\": "src/"
 			,"\\\\'.ucwords($vendorName).'\\\\'.ucwords($projectName).'\\\\Test\\\\": "tests/"
 		}
 	}
 }';
 		file_put_contents($projectDir.'/composer.json', $text);
+
+		$text = '<?php
+define(\'FCPATH\', dirname(dirname(__FILE__)).\'/\');
+include(FCPATH.\'vendor/autoload.php\');
+';
+		file_put_contents($projectDir.'/tests/config.php', $text);
+
+		$text = '<?php
+include(dirname(__FILE__).\'/config.php\');
+';
+		file_put_contents($projectDir.'/tests/test.php', $text);
 	}
 
 	// DOC   list - List repositories
