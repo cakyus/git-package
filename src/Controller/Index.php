@@ -121,6 +121,20 @@ include(dirname(__FILE__).\'/config.php\');
 		file_put_contents($projectDir.'/tests/test.php', $text);
 	}
 
+	// DOC   install <vendorName/projectName>
+
+	public function install($packageName) {
+		$composerConfigFile = $_SERVER['HOME'].'/.config/composer/config.json';
+		$composerConfigText = file_get_contents($composerConfigFile);
+		$composerConfig = json_decode($composerConfigText, TRUE);
+		if (isset($composerConfig['repositories']) == FALSE) {
+			return FALSE;
+		}
+		foreach ($composerConfig['repositories'] as $repositoryName => $repository) {
+			var_dump($repositoryName); die();
+		}
+	}
+
 	// DOC   list - List repositories
 
 	public function list() {
