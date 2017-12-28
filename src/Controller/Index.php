@@ -102,8 +102,8 @@ class Index {
 	,"autoload": {
 		 "classmap": ["src/"]
 		,"psr-4": {
-			 "\\\\'.ucwords($vendorName).'\\\\'.ucwords($projectName).'\\\\": "src/"
-			,"\\\\'.ucwords($vendorName).'\\\\'.ucwords($projectName).'\\\\Test\\\\": "tests/"
+			 "'.ucwords($vendorName).'\\\\'.ucwords($projectName).'\\\\": "src/"
+			,"'.ucwords($vendorName).'\\\\'.ucwords($projectName).'\\\\Test\\\\": "tests/"
 		}
 	}
 }';
