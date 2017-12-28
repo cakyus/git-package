@@ -39,6 +39,9 @@ class Index {
 			.' -mindepth 2 -maxdepth 2 -type d'
 			) as $vendorDir) {
 			$vendorGitDir = $vendorDir.'/.git';
+			if (is_dir($vendorGitDir) == FALSE) {
+				continue;
+			}
 			$vendorName = substr($vendorDir, strlen($vendorRootDir) + 1);
 			$vendorCommandGitStatus = 'git'
 				.' --git-dir='.$vendorGitDir
